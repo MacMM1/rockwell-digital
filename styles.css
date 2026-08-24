@@ -713,8 +713,9 @@ section{ padding: var(--gap-section) 0; }
 /* ============================================================
    Play / Tetris section
    ============================================================ */
-.play{ background: var(--ink-deep); color: var(--paper); }
+.play{ background: var(--ink-deep); color: var(--paper); padding: 40px 0 48px; }
 .play .section-tag{ color: #C7A98A; }
+.play .section-head{ margin-bottom: 20px; }
 .play .section-head h2{ color: var(--paper); }
 .play .section-head p{ color: #CBB9A9; }
 
@@ -722,7 +723,7 @@ section{ padding: var(--gap-section) 0; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
 }
 .game-board-wrap{
   background: #2E2118;
@@ -859,7 +860,7 @@ section{ padding: var(--gap-section) 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: 0;
   padding: 8px 14px;
   border: 2px solid #6B563F;
   font-family: var(--font-mono);
