@@ -843,6 +843,12 @@ section{ padding: var(--gap-section) 0; }
   display: inline-block;
   flex-shrink: 0;
 }
+.play-down-hint{
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #A88E76;
+}
 
 /* ============================================================
    Win modal (Tetris marketing gimmick)
