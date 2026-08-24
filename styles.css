@@ -662,17 +662,6 @@ section{ padding: var(--gap-section) 0; }
   padding: clamp(48px, 7vw, 80px) 0 clamp(40px, 6vw, 64px);
   border-bottom: 1px solid var(--line);
 }
-.page-hero .back-link{
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--clay-text);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-.page-hero .back-link:hover{ color: var(--ink); }
 .page-hero h1{
   font-size: clamp(2.1rem, 4vw, 3rem);
   font-weight: 800;
@@ -728,6 +717,62 @@ section{ padding: var(--gap-section) 0; }
   margin-top: 8px;
   display: block;
 }
+
+/* ============================================================
+   Founder (About page)
+   ============================================================ */
+.founder-card{
+  display: flex;
+  gap: clamp(28px, 4vw, 48px);
+  background: var(--linen);
+  border: 1px solid var(--line-strong);
+  padding: clamp(28px, 4vw, 44px);
+  align-items: flex-start;
+}
+.founder-photo{
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-color: var(--paper);
+  border: 1px solid var(--line-strong);
+  padding: 8px;
+}
+.founder-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.founder-copy .eyebrow{ margin-bottom: 10px; }
+.founder-copy h3{
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.founder-copy p{
+  color: var(--clay-text);
+  max-width: 62ch;
+}
+.founder-creds{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 22px 0;
+}
+.founder-cred{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+.founder-cred svg{ width: 12px; height: 12px; flex-shrink: 0; }
+.founder-cred svg rect{ fill: var(--clay-text); }
 
 /* ============================================================
    Play / Tetris section
@@ -1069,6 +1114,9 @@ section{ padding: var(--gap-section) 0; }
   .services-grid{ grid-template-columns: 1fr; }
   .contact-grid{ grid-template-columns: 1fr; }
   .quick-facts{ grid-template-columns: repeat(2, 1fr); }
+  .founder-card{ flex-direction: column; align-items: center; text-align: center; }
+  .founder-copy p{ max-width: none; }
+  .founder-creds{ justify-content: center; }
   .game-panel{ flex-direction: column; gap: 20px; }
   .game-panel-left{ max-width: 360px; }
   .game-hint{ border-left: none; padding-left: 0; text-align: center; }
