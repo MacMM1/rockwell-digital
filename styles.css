@@ -339,8 +339,8 @@ button{ font: inherit; }
   background: var(--ink);
   animation: heroDrop 720ms var(--ease-snap) both;
 }
-.hero-block.b2{ background: var(--clay); animation-delay: 110ms; }
-.hero-block.b3{ background: var(--ink-deep); animation-delay: 260ms; }
+.hero-block.b2{ animation-delay: 110ms; }
+.hero-block.b3{ animation-delay: 260ms; }
 @keyframes heroDrop{
   0%{ transform: translateY(-160%); opacity: 0; }
   62%{ transform: translateY(6%); opacity: 1; }
