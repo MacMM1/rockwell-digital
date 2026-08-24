@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -213,15 +213,13 @@
             </div>
           </div>
           <p class="game-message" id="game-message" aria-live="polite"></p>
-          <div class="game-board-bleed">
-            <div class="game-board-wrap">
-              <canvas id="tetris-canvas" width="1027" height="130" role="img" aria-label="Playable Tetris game that spells out Rockwell Digital"></canvas>
-              <div class="touch-controls" aria-label="Game touch controls">
-                <button type="button" data-action="left" aria-label="Move left">◀</button>
-                <button type="button" data-action="rotate" aria-label="Rotate">⟳</button>
-                <button type="button" data-action="right" aria-label="Move right">▶</button>
-                <button type="button" data-action="down" aria-label="Soft drop">▼</button>
-              </div>
+          <div class="game-board-wrap">
+            <canvas id="tetris-canvas" width="1027" height="130" role="img" aria-label="Playable Tetris game that spells out Rockwell Digital"></canvas>
+            <div class="touch-controls" aria-label="Game touch controls">
+              <button type="button" data-action="left" aria-label="Move left">◀</button>
+              <button type="button" data-action="rotate" aria-label="Rotate">⟳</button>
+              <button type="button" data-action="right" aria-label="Move right">▶</button>
+              <button type="button" data-action="down" aria-label="Soft drop">▼</button>
             </div>
           </div>
         </div>
@@ -334,7 +332,7 @@
     </form>
   </dialog>
 
-  <script src="script.js?v=4" defer></script>
-  <script src="tetris.js?v=4" defer></script>
+  <script src="script.js?v=5" defer></script>
+  <script src="tetris.js?v=5" defer></script>
 </body>
 </html>
