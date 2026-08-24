@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -28,14 +28,14 @@
         <span class="logo-wordmark"><span class="w-rockwell">Rockwell</span><span class="w-digital">Digital</span></span>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Primary">
-        <a href="index.html#services" aria-current="page">Services</a>
-        <a href="index.html#how">How it works</a>
-        <a href="index.html#play">Play</a>
+        <a href="services.html" aria-current="page">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="resources.html">Resources</a>
         <a href="about.html">About</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <div class="header-actions">
-        <a class="btn btn-primary header-cta" href="index.html#contact"><span class="cta-full">Start a project</span><span class="cta-short">Start</span></a>
+        <a class="btn btn-primary header-cta" href="contact.html"><span class="cta-full">Start a project</span><span class="cta-short">Start</span></a>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -47,12 +47,12 @@
 
     <section class="page-hero">
       <div class="wrap">
-        <a class="back-link" href="index.html">&larr; Back to home</a>
+        <a class="back-link" href="services.html">&larr; Back to Services</a>
         <span class="eyebrow">Service · 01</span>
         <h1>Website Services</h1>
         <p class="hero-sub">A site that works, not just exists. New builds, redesigns, and the ongoing management that keeps it that way — hand-built, mobile-first, and yours from day one.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="index.html#contact">Start a project</a>
+          <a class="btn btn-primary" href="contact.html">Start a project</a>
           <a class="btn btn-secondary" href="ads-management.html">See Ads Management too</a>
         </div>
       </div>
@@ -136,36 +136,13 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section class="cta-banner">
       <div class="wrap">
-        <div class="contact-grid">
-          <div class="contact-copy reveal">
-            <span class="section-tag">Get in touch</span>
-            <h2>Tell us about your business.</h2>
-            <p>No pitch, no obligation. Tell us what's going on and we'll tell you honestly whether a website would actually help — and how we'd approach it.</p>
-            <div class="contact-detail">
-              <a href="mailto:hello@rockwelldigital.co.uk">hello@rockwelldigital.co.uk</a>
-            </div>
-          </div>
-          <form class="contact-form reveal" id="contactForm">
-            <div class="field">
-              <label for="cf-name">Name</label>
-              <input type="text" id="cf-name" name="name" required>
-            </div>
-            <div class="field">
-              <label for="cf-email">Email</label>
-              <input type="email" id="cf-email" name="email" required>
-            </div>
-            <div class="field">
-              <label for="cf-promo">Promo code (optional)</label>
-              <input type="text" id="cf-promo" name="promo" autocomplete="off">
-            </div>
-            <div class="field">
-              <label for="cf-message">What do you need?</label>
-              <textarea id="cf-message" name="message" required placeholder="A new website, a redesign, or ongoing management..."></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit">Send message</button>
-          </form>
+        <div class="section-head reveal">
+          <span class="section-tag">Ready?</span>
+          <h2>Tell us about your business.</h2>
+          <p>No pitch, no obligation — just an honest read on what would actually help.</p>
+          <a class="btn btn-primary" href="contact.html">Get in touch</a>
         </div>
       </div>
     </section>
@@ -183,15 +160,16 @@
         <span class="logo-wordmark" style="font-size:1.1rem;"><span class="w-rockwell">Rockwell</span><span class="w-digital">Digital</span></span>
       </a>
       <nav class="footer-nav" aria-label="Footer">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#how">How it works</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="resources.html">Resources</a>
         <a href="about.html">About</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <p class="footer-meta">hello@rockwelldigital.co.uk<br>© <span id="year"></span> Rockwell Digital · UK</p>
     </div>
   </footer>
 
-  <script src="script.js?v=6" defer></script>
+  <script src="script.js?v=7" defer></script>
 </body>
 </html>
