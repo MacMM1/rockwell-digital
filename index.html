@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -186,54 +186,6 @@
       </div>
     </section>
 
-    <section class="play" id="play">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="section-tag">Okay, fine</span>
-          <h2>Two pieces fit better than one.</h2>
-          <p>A website that just talks about "engagement" felt a bit rich. So here's an actual game — built the same way we build everything else: one piece at a time, made to fit.</p>
-          <p class="play-teaser"><span class="play-teaser-dot" aria-hidden="true"></span>Try your luck. Win a free website demo.</p>
-          <p class="play-down-hint">Hint: press ↓ on your keyboard.</p>
-        </div>
-        <div class="game-shell reveal">
-          <div class="game-panel">
-            <div class="game-panel-left">
-              <div class="game-stat">
-                <span class="game-stat-label">Score</span>
-                <span class="game-stat-value" id="stat-score">0</span>
-              </div>
-              <div class="game-stat">
-                <span class="game-stat-label">Lines</span>
-                <span class="game-stat-value" id="stat-lines">0</span>
-              </div>
-              <div class="next-piece-wrap">
-                <span class="game-stat-label">Next</span>
-                <canvas id="next-canvas" width="90" height="90"></canvas>
-              </div>
-              <div class="game-controls">
-                <button class="game-btn" id="btn-start" type="button">Start</button>
-                <button class="game-btn" id="btn-pause" type="button">Pause</button>
-              </div>
-            </div>
-            <div class="game-panel-right">
-              <p class="game-hint">← → move · ↑ rotate<br>↓ soft drop · space hard drop<br>P pause</p>
-            </div>
-          </div>
-          <p class="game-message" id="game-message" aria-live="polite"></p>
-          <div class="game-board-wrap">
-            <canvas id="tetris-canvas" width="1027" height="130" role="img" aria-label="Playable Tetris game that spells out Rockwell Digital"></canvas>
-            <div class="touch-controls" aria-label="Game touch controls">
-              <button type="button" data-action="left" aria-label="Move left">◀</button>
-              <button type="button" data-action="rotate" aria-label="Rotate">⟳</button>
-              <button type="button" data-action="right" aria-label="Move right">▶</button>
-              <button type="button" data-action="down" aria-label="Soft drop">▼</button>
-            </div>
-          </div>
-        </div>
-        <p class="play-footer-note reveal">Cleared a few lines? <a href="#contact">Let's build something real.</a></p>
-      </div>
-    </section>
-
     <section id="faq">
       <div class="wrap">
         <div class="section-head reveal">
@@ -327,21 +279,6 @@
     </div>
   </footer>
 
-  <dialog class="win-modal" id="winModal" aria-labelledby="winModalTitle">
-    <form method="dialog" class="win-modal-inner">
-      <button type="submit" class="win-modal-close" aria-label="Close">&times;</button>
-      <span class="section-tag">You won</span>
-      <h2 id="winModalTitle">Congratulations!</h2>
-      <p>You've just won a free live demo for your website. Claim it with the code below.</p>
-      <span class="win-modal-code" id="winModalCode">ROCKDEMO</span>
-      <div class="win-modal-actions">
-        <button type="button" class="btn btn-primary" id="winModalRedeem" autofocus>Redeem now</button>
-        <button type="submit" class="btn btn-secondary">Maybe later</button>
-      </div>
-    </form>
-  </dialog>
-
-  <script src="script.js?v=8" defer></script>
-  <script src="tetris.js?v=8" defer></script>
+  <script src="script.js?v=9" defer></script>
 </body>
 </html>
