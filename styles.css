@@ -227,6 +227,7 @@ button{ font: inherit; }
   transition: width 160ms var(--ease-out);
 }
 .main-nav a:hover::after{ width: 100%; }
+.main-nav a[aria-current="page"]::after{ width: 100%; background: var(--ink); }
 
 .header-actions{ display: flex; align-items: center; gap: 16px; }
 .header-cta{ padding: 11px 20px; font-size: 0.9rem; white-space: nowrap; }
@@ -561,6 +562,125 @@ section{ padding: var(--gap-section) 0; }
 }
 
 /* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list{
+  max-width: 780px;
+  border-top: 1px solid var(--line);
+}
+.faq-item{
+  border-bottom: 1px solid var(--line);
+}
+.faq-item summary{
+  cursor: pointer;
+  list-style: none;
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker{ display: none; }
+.faq-item summary::after{
+  content: "+";
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  transition: transform 160ms var(--ease-out);
+}
+.faq-item[open] summary::after{ content: "–"; }
+.faq-item p{
+  padding: 0 0 24px;
+  max-width: 62ch;
+  color: var(--clay-text);
+}
+.faq-item summary:focus-visible{ outline-offset: 6px; }
+
+/* ============================================================
+   Sub-page hero (About / service detail pages)
+   ============================================================ */
+.page-hero{
+  padding: clamp(48px, 7vw, 80px) 0 clamp(40px, 6vw, 64px);
+  border-bottom: 1px solid var(--line);
+}
+.page-hero .back-link{
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--clay-text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.page-hero .back-link:hover{ color: var(--ink); }
+.page-hero h1{
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-weight: 800;
+  max-width: 20ch;
+}
+.page-hero .hero-sub{ margin-top: 18px; max-width: 56ch; }
+.page-hero .hero-actions{ margin-top: 28px; }
+
+/* Deliverables list (service detail pages) */
+.deliverables{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 32px;
+}
+.deliverables li{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 1rem;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.deliverables svg{ width: 16px; height: 16px; flex-shrink: 0; margin-top: 4px; }
+.deliverables svg rect{ fill: var(--ink); }
+
+/* Quick facts strip (About page) */
+.quick-facts{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line-strong);
+  border: 1px solid var(--line-strong);
+}
+.quick-fact{
+  background: var(--linen);
+  padding: 24px;
+}
+.quick-fact-label{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clay-text);
+  display: block;
+}
+.quick-fact-value{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-top: 8px;
+  display: block;
+}
+
+/* ============================================================
    Play / Tetris section
    ============================================================ */
 .play{ background: var(--ink-deep); color: var(--paper); }
@@ -777,12 +897,15 @@ section{ padding: var(--gap-section) 0; }
   .why-grid{ grid-template-columns: 1fr; }
   .services-grid{ grid-template-columns: 1fr; }
   .contact-grid{ grid-template-columns: 1fr; }
+  .quick-facts{ grid-template-columns: repeat(2, 1fr); }
   .game-shell{ grid-template-columns: 1fr; justify-items: center; }
   .game-panel{ width: 100%; max-width: 320px; }
 }
 
 @media (max-width: 720px){
   .how-steps{ grid-template-columns: 1fr; }
+  .deliverables{ grid-template-columns: 1fr; }
+  .quick-facts{ grid-template-columns: 1fr; }
   .header-cta{ padding: 10px 14px; font-size: 0.85rem; }
   .cta-full{ display: none; }
   .cta-short{ display: inline; }
