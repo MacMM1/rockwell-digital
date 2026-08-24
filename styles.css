@@ -37,6 +37,7 @@ body{
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1,h2,h3{
@@ -694,19 +695,26 @@ section{ padding: var(--gap-section) 0; }
   align-items: center;
   gap: 20px;
 }
+.game-board-bleed{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
+  padding: 0 16px;
+}
 .game-board-wrap{
   background: #2E2118;
   border: 3px solid #4A3A2C;
   padding: 10px;
   border-radius: 6px;
   box-shadow: inset 0 0 0 1px #1C130D;
-  max-width: 100%;
+  max-width: 2600px;
+  margin: 0 auto;
 }
 #tetris-canvas{
   display: block;
   background: #F7F2EC;
   image-rendering: pixelated;
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 .game-panel{
@@ -714,8 +722,19 @@ section{ padding: var(--gap-section) 0; }
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 32px;
   width: 100%;
+}
+.game-panel-left{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.game-panel-right{
+  display: flex;
+  align-items: center;
 }
 .game-stat{
   background: #2E2118;
@@ -768,15 +787,16 @@ section{ padding: var(--gap-section) 0; }
 }
 .game-btn:hover{ background: #4A3A2C; transform: translate(-2px,-2px); }
 .game-hint{
-  flex-basis: 100%;
-  text-align: center;
+  text-align: left;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: #A88E76;
   line-height: 1.7;
+  border-left: 1px solid #4A3A2C;
+  padding-left: 24px;
 }
 .game-message{
-  flex-basis: 100%;
+  width: 100%;
   text-align: center;
   font-size: 0.92rem;
   color: #E7D9C8;
@@ -995,7 +1015,9 @@ section{ padding: var(--gap-section) 0; }
   .services-grid{ grid-template-columns: 1fr; }
   .contact-grid{ grid-template-columns: 1fr; }
   .quick-facts{ grid-template-columns: repeat(2, 1fr); }
-  .game-panel{ max-width: 360px; }
+  .game-panel{ flex-direction: column; gap: 20px; }
+  .game-panel-left{ max-width: 360px; }
+  .game-hint{ border-left: none; padding-left: 0; text-align: center; }
 }
 
 @media (max-width: 720px){

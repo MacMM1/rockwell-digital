@@ -190,32 +190,38 @@
         </div>
         <div class="game-shell reveal">
           <div class="game-panel">
-            <div class="game-stat">
-              <span class="game-stat-label">Score</span>
-              <span class="game-stat-value" id="stat-score">0</span>
+            <div class="game-panel-left">
+              <div class="game-stat">
+                <span class="game-stat-label">Score</span>
+                <span class="game-stat-value" id="stat-score">0</span>
+              </div>
+              <div class="game-stat">
+                <span class="game-stat-label">Lines</span>
+                <span class="game-stat-value" id="stat-lines">0</span>
+              </div>
+              <div class="next-piece-wrap">
+                <span class="game-stat-label">Next</span>
+                <canvas id="next-canvas" width="90" height="90"></canvas>
+              </div>
+              <div class="game-controls">
+                <button class="game-btn" id="btn-start" type="button">Start</button>
+                <button class="game-btn" id="btn-pause" type="button">Pause</button>
+              </div>
             </div>
-            <div class="game-stat">
-              <span class="game-stat-label">Lines</span>
-              <span class="game-stat-value" id="stat-lines">0</span>
+            <div class="game-panel-right">
+              <p class="game-hint">← → move · ↑ rotate<br>↓ soft drop · space hard drop<br>P pause</p>
             </div>
-            <div class="next-piece-wrap">
-              <span class="game-stat-label">Next</span>
-              <canvas id="next-canvas" width="90" height="90"></canvas>
-            </div>
-            <div class="game-controls">
-              <button class="game-btn" id="btn-start" type="button">Start</button>
-              <button class="game-btn" id="btn-pause" type="button">Pause</button>
-            </div>
-            <p class="game-hint">← → move · ↑ rotate<br>↓ soft drop · space hard drop<br>P pause</p>
-            <p class="game-message" id="game-message" aria-live="polite"></p>
           </div>
-          <div class="game-board-wrap">
-            <canvas id="tetris-canvas" width="1027" height="130" role="img" aria-label="Playable Tetris game that spells out Rockwell Digital"></canvas>
-            <div class="touch-controls" aria-label="Game touch controls">
-              <button type="button" data-action="left" aria-label="Move left">◀</button>
-              <button type="button" data-action="rotate" aria-label="Rotate">⟳</button>
-              <button type="button" data-action="right" aria-label="Move right">▶</button>
-              <button type="button" data-action="down" aria-label="Soft drop">▼</button>
+          <p class="game-message" id="game-message" aria-live="polite"></p>
+          <div class="game-board-bleed">
+            <div class="game-board-wrap">
+              <canvas id="tetris-canvas" width="1027" height="130" role="img" aria-label="Playable Tetris game that spells out Rockwell Digital"></canvas>
+              <div class="touch-controls" aria-label="Game touch controls">
+                <button type="button" data-action="left" aria-label="Move left">◀</button>
+                <button type="button" data-action="rotate" aria-label="Rotate">⟳</button>
+                <button type="button" data-action="right" aria-label="Move right">▶</button>
+                <button type="button" data-action="down" aria-label="Soft drop">▼</button>
+              </div>
             </div>
           </div>
         </div>
