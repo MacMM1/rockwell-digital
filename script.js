@@ -37,6 +37,31 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
   }
 
+  // Dark mode toggle
+  const THEME_KEY = 'rd-theme';
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeLabel = themeToggle ? themeToggle.querySelector('.theme-toggle-label') : null;
+
+  const applyThemeUI = (theme) => {
+    if (!themeToggle) return;
+    const isDark = theme === 'dark';
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    if (themeLabel) themeLabel.textContent = isDark ? 'Light' : 'Dark';
+  };
+  applyThemeUI(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      if (next === 'dark') root.setAttribute('data-theme', 'dark');
+      else root.removeAttribute('data-theme');
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      applyThemeUI(next);
+    });
+  }
+
   // Scroll progress "snake"
   const scrollFill = document.getElementById('scrollFill');
   const updateScrollProgress = () => {
