@@ -71,9 +71,38 @@
       const name = form.name.value.trim();
       const email = form.email.value.trim();
       const message = form.message.value.trim();
+      const promo = form.promo ? form.promo.value.trim() : '';
       const subject = encodeURIComponent(`New enquiry from ${name}`);
-      const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+      const bodyText = `${message}\n\n— ${name} (${email})` + (promo ? `\nPromo code: ${promo}` : '');
+      const body = encodeURIComponent(bodyText);
       window.location.href = `mailto:hello@rockwelldigital.co.uk?subject=${subject}&body=${body}`;
     });
+  }
+
+  // Tetris win modal (only present on index.html, where tetris.js runs)
+  const winModal = document.getElementById('winModal');
+  if (winModal) {
+    document.addEventListener('rd:tetris-win', () => {
+      winModal.showModal();
+    });
+
+    winModal.addEventListener('click', (e) => {
+      if (e.target === winModal) winModal.close();
+    });
+
+    const redeemBtn = document.getElementById('winModalRedeem');
+    const codeEl = document.getElementById('winModalCode');
+    if (redeemBtn) {
+      redeemBtn.addEventListener('click', () => {
+        winModal.close();
+        const promoField = document.getElementById('cf-promo');
+        const nameField = document.getElementById('cf-name');
+        if (promoField && codeEl) promoField.value = codeEl.textContent.trim();
+        document.getElementById('contact')?.scrollIntoView();
+        if (nameField) {
+          window.setTimeout(() => nameField.focus(), reduceMotion ? 50 : 450);
+        }
+      });
+    }
   }
 })();

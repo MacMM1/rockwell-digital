@@ -31,6 +31,7 @@
     L: '#4A3A2C',
   };
   const TYPES = Object.keys(SHAPES);
+  const RIG_FILL_COLOR = COLORS.J; // reuse an existing piece color so the pre-filled row looks legit
 
   const scoreEl = document.getElementById('stat-score');
   const linesEl = document.getElementById('stat-lines');
@@ -41,6 +42,7 @@
   let board, current, next, score, lines, level, dropInterval, dropTimer;
   let running = false;
   let paused = false;
+  let hasWon = false;
   let rafId = null;
   let lastTime = 0;
 
@@ -128,6 +130,10 @@
     merge(current);
     const cleared = clearLines();
     applyScore(cleared);
+    if (!hasWon) {
+      triggerWin();
+      return;
+    }
     current = next;
     next = spawnPiece(randomType());
     drawNext();
@@ -260,6 +266,16 @@
     btnStart.textContent = 'Start';
   }
 
+  function triggerWin() {
+    hasWon = true;
+    running = false;
+    current = null;
+    if (rafId) cancelAnimationFrame(rafId);
+    setMessage('You win! Check the popup for your promo code — press Start to play again.');
+    btnStart.textContent = 'Start';
+    document.dispatchEvent(new CustomEvent('rd:tetris-win'));
+  }
+
   function tick(time) {
     if (!running) return;
     if (!paused) {
@@ -278,12 +294,16 @@
 
   function resetGame() {
     board = emptyBoard();
+    for (let c = 0; c < COLS; c++) {
+      if (c < 3 || c > 6) board[ROWS - 1][c] = RIG_FILL_COLOR;
+    }
+    hasWon = false;
     score = 0;
     lines = 0;
     level = 1;
-    dropInterval = 800;
-    current = spawnPiece(randomType());
-    next = spawnPiece(randomType());
+    dropInterval = 150; // fast first drop so an AFK player still "wins" in a few seconds
+    current = spawnPiece('I');       // forced piece lines up with the pre-filled row above
+    next = spawnPiece(randomType()); // "Next" preview stays genuinely random
     scoreEl.textContent = 0;
     linesEl.textContent = 0;
     drawNext();

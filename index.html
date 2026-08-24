@@ -186,6 +186,7 @@
           <span class="section-tag">Okay, fine</span>
           <h2>Two pieces fit better than one.</h2>
           <p>A website that just talks about "engagement" felt a bit rich. So here's an actual game — built the same way we build everything else: one piece at a time, made to fit.</p>
+          <p class="play-teaser"><span class="play-teaser-dot" aria-hidden="true"></span>Try your luck. Win a free website demo.</p>
         </div>
         <div class="game-shell reveal">
           <div class="game-board-wrap">
@@ -278,6 +279,10 @@
               <input type="email" id="cf-email" name="email" required>
             </div>
             <div class="field">
+              <label for="cf-promo">Promo code (optional)</label>
+              <input type="text" id="cf-promo" name="promo" autocomplete="off">
+            </div>
+            <div class="field">
               <label for="cf-message">What do you need?</label>
               <textarea id="cf-message" name="message" required placeholder="A new website, help with ads, or both..."></textarea>
             </div>
@@ -308,6 +313,20 @@
       <p class="footer-meta">hello@rockwelldigital.co.uk<br>© <span id="year"></span> Rockwell Digital · UK</p>
     </div>
   </footer>
+
+  <dialog class="win-modal" id="winModal" aria-labelledby="winModalTitle">
+    <form method="dialog" class="win-modal-inner">
+      <button type="submit" class="win-modal-close" aria-label="Close">&times;</button>
+      <span class="section-tag">You won</span>
+      <h2 id="winModalTitle">Congratulations!</h2>
+      <p>You've just won a free live demo for your website. Claim it with the code below.</p>
+      <span class="win-modal-code" id="winModalCode">ROCKDEMO</span>
+      <div class="win-modal-actions">
+        <button type="button" class="btn btn-primary" id="winModalRedeem" autofocus>Redeem now</button>
+        <button type="submit" class="btn btn-secondary">Maybe later</button>
+      </div>
+    </form>
+  </dialog>
 
   <script src="script.js" defer></script>
   <script src="tetris.js" defer></script>
