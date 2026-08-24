@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20">
+  <link rel="stylesheet" href="styles.css?v=21">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -17,6 +17,11 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="scroll-snake" aria-hidden="true"><div class="scroll-snake-fill" id="scrollFill"></div></div>
+
+  <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+    <svg class="theme-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
 
   <header class="site-header">
     <div class="wrap header-inner">
@@ -38,10 +43,6 @@
       </nav>
       <div class="header-actions">
         <a class="btn btn-primary header-cta" href="contact.html"><span class="cta-full">Start a project</span><span class="cta-short">Start</span></a>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
-          <svg class="theme-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>
-          <span class="theme-toggle-label">Dark</span>
-        </button>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -71,6 +72,9 @@
               <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>New builds — live in weeks, not months</li>
               <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Redesigns of an existing site</li>
               <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Ongoing management, so nothing breaks quietly</li>
+              <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Hand-built code — no bloated page-builder plugins</li>
+              <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Hosting handled for you, or handed over — your choice</li>
+              <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Mobile-first, every time</li>
             </ul>
             <a class="btn btn-secondary" href="website-services.html">Learn more about Website Services <span aria-hidden="true">→</span></a>
           </article>
@@ -82,73 +86,13 @@
             <ul class="service-list">
               <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Google Search &amp; Local Services Ads</li>
               <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Meta ads — Facebook &amp; Instagram</li>
+              <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Conversion tracking set up properly from day one</li>
               <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Clear monthly reporting, no jargon</li>
+              <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>You keep the ad account — always</li>
+              <li><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Ongoing optimisation, not a set-and-forget campaign</li>
             </ul>
             <a class="btn btn-secondary" href="ads-management.html">Learn more about Ads Management <span aria-hidden="true">→</span></a>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <div class="wrap"><div class="divider"></div></div>
-
-    <section>
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="section-tag">Process</span>
-          <h2>Simple, on purpose.</h2>
-          <p>No pitch deck, no discovery workshop. Four steps, start to finish — whichever service you need.</p>
-        </div>
-        <div class="how-steps">
-          <div class="how-step reveal">
-            <span class="how-num">01</span>
-            <h3>Tell us about your business</h3>
-            <p>A short call. What you do, who you're trying to reach, what's not working.</p>
-          </div>
-          <div class="how-step reveal">
-            <span class="how-num">02</span>
-            <h3>We scope exactly what you need</h3>
-            <p>A plain-English quote covering only the work that will actually help.</p>
-          </div>
-          <div class="how-step reveal">
-            <span class="how-num">03</span>
-            <h3>We build and launch</h3>
-            <p>A live site, live ad campaigns, or both — on the timeline we agreed.</p>
-          </div>
-          <div class="how-step reveal">
-            <span class="how-num">04</span>
-            <h3>We keep it running</h3>
-            <p>Maintenance or monthly ad management, only if and when you want it.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="why">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="section-tag">Why start here</span>
-          <h2>Built around what you need.</h2>
-        </div>
-      </div>
-      <div class="wrap">
-        <div class="why-grid">
-          <div class="why-card reveal">
-            <h3><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Start with either</h3>
-            <p>Website first, ads first, or both together — your call, your pace.</p>
-          </div>
-          <div class="why-card reveal">
-            <h3><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>No long-term commitment</h3>
-            <p>Ads run on a short initial term, then month to month. Websites are a one-off unless you want ongoing management.</p>
-          </div>
-          <div class="why-card reveal">
-            <h3><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>You own everything</h3>
-            <p>Your domain, hosting, and ad accounts stay in your name from day one.</p>
-          </div>
-          <div class="why-card reveal">
-            <h3><svg viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>Direct answers</h3>
-            <p>If a service won't move the needle for your business, we'll tell you before we sell it to you.</p>
-          </div>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20">
+  <link rel="stylesheet" href="styles.css?v=21">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -17,6 +17,11 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="scroll-snake" aria-hidden="true"><div class="scroll-snake-fill" id="scrollFill"></div></div>
+
+  <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+    <svg class="theme-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
 
   <header class="site-header">
     <div class="wrap header-inner">
@@ -38,10 +43,6 @@
       </nav>
       <div class="header-actions">
         <a class="btn btn-primary header-cta" href="contact.html"><span class="cta-full">Start a project</span><span class="cta-short">Start</span></a>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
-          <svg class="theme-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10"></rect></svg>
-          <span class="theme-toggle-label">Dark</span>
-        </button>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -54,7 +55,7 @@
     <section class="page-hero">
       <div class="wrap">
         <span class="eyebrow">About</span>
-        <h1>No account managers. No hand-offs. Just the work.</h1>
+        <h1>No middlemen. No cracks. Just solid work.</h1>
         <p class="hero-sub">Rockwell Digital is a UK-based digital agency built around Website Services and Ads Management. You work directly with the founder — not a sales layer standing between you and them.</p>
       </div>
     </section>

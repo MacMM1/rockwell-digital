@@ -248,12 +248,16 @@ button{ font: inherit; }
 .cta-short{ display: none; }
 
 .theme-toggle{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 950;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   height: 36px;
   padding: 0 12px;
-  background: transparent;
+  background: var(--paper);
   border: 2px solid var(--ink);
   cursor: pointer;
   font-family: var(--font-mono);
@@ -1162,7 +1166,8 @@ section{ padding: var(--gap-section) 0; }
 }
 .footer-nav{
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 12px 24px;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -1200,14 +1205,11 @@ section{ padding: var(--gap-section) 0; }
   .deliverables{ grid-template-columns: 1fr; }
   .quick-facts{ grid-template-columns: 1fr; }
   .industries-grid{ grid-template-columns: 1fr; }
-  .header-inner{ gap: 14px; }
-  .logo-wordmark{ font-size: 1.1rem; }
-  .header-cta{ padding: 8px 12px; font-size: 0.85rem; }
+  .header-cta{ padding: 10px 14px; }
   .cta-full{ display: none; }
   .cta-short{ display: inline; }
   .touch-controls{ display: grid; }
-  .header-actions{ gap: 6px; }
-  .theme-toggle{ width: 30px; padding: 0; justify-content: center; }
+  .theme-toggle{ right: 16px; bottom: 16px; width: 30px; padding: 0; justify-content: center; }
   .theme-toggle-label{ display: none; }
 
   .nav-toggle{ display: flex; }
