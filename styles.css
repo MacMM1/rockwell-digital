@@ -249,34 +249,27 @@ button{ font: inherit; }
 
 .theme-toggle{
   position: fixed;
-  right: max(24px, calc((100vw - var(--wrap)) / 2 - 92px));
-  bottom: 24px;
+  right: 18px;
+  bottom: 18px;
   z-index: 950;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  width: 76px;
-  height: 32px;
-  padding: 0 8px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
   background: var(--paper);
   border: 2px solid var(--ink);
   cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink);
-  white-space: nowrap;
-  transition: transform 140ms steps(3, end), background-color 140ms var(--ease-out), color 140ms var(--ease-out), right 160ms var(--ease-out);
+  transition: transform 140ms steps(3, end), background-color 140ms var(--ease-out), color 140ms var(--ease-out);
 }
 .theme-toggle:hover{
   background: var(--ink);
   color: var(--paper);
   transform: translate(-2px,-2px);
 }
-.theme-toggle-icon{ width: 10px; height: 10px; flex-shrink: 0; }
+.theme-toggle-label{ display: none; }
+.theme-toggle-icon{ width: 11px; height: 11px; flex-shrink: 0; }
 .theme-toggle-icon rect{ fill: var(--ink); }
 .theme-toggle:hover .theme-toggle-icon rect{ fill: var(--paper); }
 .theme-toggle:active{ transform: translate(0,0); }
@@ -1211,8 +1204,6 @@ section{ padding: var(--gap-section) 0; }
   .cta-full{ display: none; }
   .cta-short{ display: inline; }
   .touch-controls{ display: grid; }
-  .theme-toggle{ right: 16px; bottom: 16px; width: 30px; padding: 0; justify-content: center; }
-  .theme-toggle-label{ display: none; }
 
   .nav-toggle{ display: flex; }
   .main-nav{
