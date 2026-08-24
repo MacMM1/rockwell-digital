@@ -249,32 +249,34 @@ button{ font: inherit; }
 
 .theme-toggle{
   position: fixed;
-  right: 24px;
+  right: max(24px, calc((100vw - var(--wrap)) / 2 - 92px));
   bottom: 24px;
   z-index: 950;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  height: 36px;
-  padding: 0 12px;
+  justify-content: center;
+  gap: 6px;
+  width: 76px;
+  height: 32px;
+  padding: 0 8px;
   background: var(--paper);
   border: 2px solid var(--ink);
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink);
   white-space: nowrap;
-  transition: transform 140ms steps(3, end), background-color 140ms var(--ease-out), color 140ms var(--ease-out);
+  transition: transform 140ms steps(3, end), background-color 140ms var(--ease-out), color 140ms var(--ease-out), right 160ms var(--ease-out);
 }
 .theme-toggle:hover{
   background: var(--ink);
   color: var(--paper);
   transform: translate(-2px,-2px);
 }
-.theme-toggle-icon{ width: 12px; height: 12px; flex-shrink: 0; }
+.theme-toggle-icon{ width: 10px; height: 10px; flex-shrink: 0; }
 .theme-toggle-icon rect{ fill: var(--ink); }
 .theme-toggle:hover .theme-toggle-icon rect{ fill: var(--paper); }
 .theme-toggle:active{ transform: translate(0,0); }
