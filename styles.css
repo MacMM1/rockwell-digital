@@ -745,6 +745,7 @@ section{ padding: var(--gap-section) 0; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   display: block;
 }
 .founder-copy .eyebrow{ margin-bottom: 10px; }
@@ -773,6 +774,25 @@ section{ padding: var(--gap-section) 0; }
 }
 .founder-cred svg{ width: 12px; height: 12px; flex-shrink: 0; }
 .founder-cred svg rect{ fill: var(--clay-text); }
+.founder-skills{
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-bottom: 26px;
+}
+.founder-skills-label{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clay-text);
+  display: block;
+  margin-bottom: 8px;
+}
+.founder-skills p{
+  color: var(--clay-text);
+  font-size: 0.92rem;
+  max-width: 62ch;
+}
 
 /* ============================================================
    Play / Tetris section
