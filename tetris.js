@@ -5,12 +5,36 @@
   const nextCanvas = document.getElementById('next-canvas');
   const nextCtx = nextCanvas.getContext('2d');
 
-  const COLS = 8;
-  const ROWS = 14;
-  const CELL = canvas.width / COLS; // 20
+  const COLS = 79;
+  const ROWS = 10;
+  const CELL = canvas.width / COLS; // 13
 
   const BOARD_BG = '#F7F2EC';
   const GRID_LINE = 'rgba(58, 42, 32, 0.08)';
+
+  // Pixel font (7 rows tall) used to pre-fill the board so it spells "ROCKWELL DIGITAL".
+  // Only the final L is special: its foot (4 cells) is left as the gap the falling piece completes.
+  const FONT = {
+    R: [[1,1,1,0],[1,0,0,1],[1,0,0,1],[1,1,1,0],[1,0,1,0],[1,0,0,1],[1,0,0,1]],
+    O: [[0,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
+    C: [[0,1,1,1],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[0,1,1,1]],
+    K: [[1,0,0,1],[1,0,1,0],[1,1,0,0],[1,1,0,0],[1,0,1,0],[1,0,1,0],[1,0,0,1]],
+    W: [[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,1,0,1],[1,1,0,1,1],[1,0,0,0,1]],
+    E: [[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,1,1,0],[1,0,0,0],[1,0,0,0],[1,1,1,1]],
+    L: [[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,1,1,1]],
+    D: [[1,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,1,1,0]],
+    I: [[1],[1],[1],[1],[1],[1],[1]],
+    G: [[0,1,1,1],[1,0,0,0],[1,0,0,0],[1,0,1,1],[1,0,0,1],[1,0,0,1],[0,1,1,1]],
+    T: [[1,1,1,1,1],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0]],
+    A: [[0,1,1,1,0],[1,0,0,0,1],[1,0,0,0,1],[1,1,1,1,1],[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1]],
+    ' ': [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+  };
+  const WORDMARK = 'ROCKWELL DIGITAL';
+  const GLYPH_ROWS = 7;
+  const PAD_TOP = ROWS - GLYPH_ROWS; // empty runway above the text for the piece to fall through
+  const LETTER_GAP = 1;
+  const WORD_GAP = 3;
+  const MARGIN = 1;
 
   const SHAPES = {
     I: [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
@@ -31,8 +55,42 @@
     L: '#4A3A2C',
   };
   const TYPES = Object.keys(SHAPES);
-  const RIG_FILL_COLOR = COLORS.J; // reuse an existing piece color so the pre-filled row looks legit
-  const SPAWN_X = Math.floor((COLS - 4) / 2); // centers a 4-wide piece on the (now narrower) board
+  const FILL_COLORS = [COLORS.J, COLORS.T, COLORS.L, COLORS.I]; // varied so the wordmark doesn't read as one flat block
+
+  // Lays out WORDMARK left-to-right using FONT, returns the static fill cells plus
+  // where the gap sits (the final L's foot — a 4-wide horizontal strip the falling I-piece completes).
+  function buildWordmarkLayout() {
+    const fills = []; // {col, row, color}
+    let x = MARGIN;
+    let gapX = 0;
+    for (let i = 0; i < WORDMARK.length; i++) {
+      const ch = WORDMARK[i];
+      const isFinal = i === WORDMARK.length - 1;
+      if (ch === ' ') {
+        x += FONT[' '][0].length + WORD_GAP;
+        continue;
+      }
+      if (isFinal) {
+        // Static vertical stroke (col x), foot cells x+1..x+4 left empty — that's the gap.
+        for (let r = 0; r < GLYPH_ROWS; r++) {
+          fills.push({ col: x, row: PAD_TOP + r, color: FILL_COLORS[r % FILL_COLORS.length] });
+        }
+        gapX = x + 1;
+        x += 5 + LETTER_GAP;
+        continue;
+      }
+      const glyph = FONT[ch];
+      const w = glyph[0].length;
+      glyph.forEach((row, r) => {
+        row.forEach((v, c) => {
+          if (v) fills.push({ col: x + c, row: PAD_TOP + r, color: FILL_COLORS[r % FILL_COLORS.length] });
+        });
+      });
+      x += w + LETTER_GAP;
+    }
+    return { fills, gapX, gapRow: ROWS - 1 };
+  }
+  const WORDMARK_LAYOUT = buildWordmarkLayout();
 
   const scoreEl = document.getElementById('stat-score');
   const linesEl = document.getElementById('stat-lines');
@@ -66,12 +124,12 @@
     return TYPES[Math.floor(Math.random() * TYPES.length)];
   }
 
-  function spawnPiece(type) {
+  function spawnPiece(type, x) {
     return {
       type,
       matrix: SHAPES[type].map((row) => row.slice()),
       color: COLORS[type],
-      x: SPAWN_X,
+      x: x === undefined ? Math.floor((COLS - 4) / 2) : x,
       y: 0,
     };
   }
@@ -295,16 +353,16 @@
 
   function resetGame() {
     board = emptyBoard();
-    for (let c = 0; c < COLS; c++) {
-      if (c < SPAWN_X || c >= SPAWN_X + 4) board[ROWS - 1][c] = RIG_FILL_COLOR;
-    }
+    WORDMARK_LAYOUT.fills.forEach(({ col, row, color }) => {
+      board[row][col] = color;
+    });
     hasWon = false;
     score = 0;
     lines = 0;
     level = 1;
-    dropInterval = 900; // paced so an untouched piece still "wins" in ~10-15s, not instantly
-    current = spawnPiece('I');       // forced piece lines up with the pre-filled row above
-    next = spawnPiece(randomType()); // "Next" preview stays genuinely random
+    dropInterval = 1400; // paced so an untouched piece still "wins" in ~10-15s, not instantly
+    current = spawnPiece('I', WORDMARK_LAYOUT.gapX); // forced piece lines up with the wordmark's gap
+    next = spawnPiece(randomType());                 // "Next" preview stays genuinely random
     scoreEl.textContent = 0;
     linesEl.textContent = 0;
     drawNext();
