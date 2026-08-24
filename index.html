@@ -189,15 +189,6 @@
           <p class="play-teaser"><span class="play-teaser-dot" aria-hidden="true"></span>Try your luck. Win a free website demo.</p>
         </div>
         <div class="game-shell reveal">
-          <div class="game-board-wrap">
-            <canvas id="tetris-canvas" width="240" height="480" role="img" aria-label="Playable Tetris game"></canvas>
-            <div class="touch-controls" aria-label="Game touch controls">
-              <button type="button" data-action="left" aria-label="Move left">◀</button>
-              <button type="button" data-action="rotate" aria-label="Rotate">⟳</button>
-              <button type="button" data-action="right" aria-label="Move right">▶</button>
-              <button type="button" data-action="down" aria-label="Soft drop">▼</button>
-            </div>
-          </div>
           <div class="game-panel">
             <div class="game-stat">
               <span class="game-stat-label">Score</span>
@@ -217,6 +208,15 @@
             </div>
             <p class="game-hint">← → move · ↑ rotate<br>↓ soft drop · space hard drop<br>P pause</p>
             <p class="game-message" id="game-message" aria-live="polite"></p>
+          </div>
+          <div class="game-board-wrap">
+            <canvas id="tetris-canvas" width="160" height="280" role="img" aria-label="Playable Tetris game"></canvas>
+            <div class="touch-controls" aria-label="Game touch controls">
+              <button type="button" data-action="left" aria-label="Move left">◀</button>
+              <button type="button" data-action="rotate" aria-label="Rotate">⟳</button>
+              <button type="button" data-action="right" aria-label="Move right">▶</button>
+              <button type="button" data-action="down" aria-label="Soft drop">▼</button>
+            </div>
           </div>
         </div>
         <p class="play-footer-note reveal">Cleared a few lines? <a href="#contact">Let's build something real.</a></p>

@@ -5,9 +5,9 @@
   const nextCanvas = document.getElementById('next-canvas');
   const nextCtx = nextCanvas.getContext('2d');
 
-  const COLS = 10;
-  const ROWS = 20;
-  const CELL = canvas.width / COLS; // 24
+  const COLS = 8;
+  const ROWS = 14;
+  const CELL = canvas.width / COLS; // 20
 
   const BOARD_BG = '#F7F2EC';
   const GRID_LINE = 'rgba(58, 42, 32, 0.08)';
@@ -32,6 +32,7 @@
   };
   const TYPES = Object.keys(SHAPES);
   const RIG_FILL_COLOR = COLORS.J; // reuse an existing piece color so the pre-filled row looks legit
+  const SPAWN_X = Math.floor((COLS - 4) / 2); // centers a 4-wide piece on the (now narrower) board
 
   const scoreEl = document.getElementById('stat-score');
   const linesEl = document.getElementById('stat-lines');
@@ -70,7 +71,7 @@
       type,
       matrix: SHAPES[type].map((row) => row.slice()),
       color: COLORS[type],
-      x: 3,
+      x: SPAWN_X,
       y: 0,
     };
   }
@@ -295,13 +296,13 @@
   function resetGame() {
     board = emptyBoard();
     for (let c = 0; c < COLS; c++) {
-      if (c < 3 || c > 6) board[ROWS - 1][c] = RIG_FILL_COLOR;
+      if (c < SPAWN_X || c >= SPAWN_X + 4) board[ROWS - 1][c] = RIG_FILL_COLOR;
     }
     hasWon = false;
     score = 0;
     lines = 0;
     level = 1;
-    dropInterval = 150; // fast first drop so an AFK player still "wins" in a few seconds
+    dropInterval = 900; // paced so an untouched piece still "wins" in ~10-15s, not instantly
     current = spawnPiece('I');       // forced piece lines up with the pre-filled row above
     next = spawnPiece(randomType()); // "Next" preview stays genuinely random
     scoreEl.textContent = 0;

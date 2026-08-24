@@ -690,7 +690,7 @@ section{ padding: var(--gap-section) 0; }
 
 .game-shell{
   display: grid;
-  grid-template-columns: minmax(0, auto) minmax(220px, 300px);
+  grid-template-columns: minmax(220px, 300px) minmax(0, auto);
   gap: 28px;
   justify-content: center;
   align-items: start;
