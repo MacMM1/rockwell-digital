@@ -1202,6 +1202,49 @@ section{ padding: var(--gap-section) 0; }
   text-align: right;
 }
 
+.footer-legal{
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.footer-legal p{
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--clay-text);
+}
+.footer-legal a{
+  color: var(--clay-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-legal a:hover{ color: var(--ink); }
+
+/* Plain-text legal pages (Privacy, Terms) */
+.legal-content{
+  max-width: 70ch;
+  padding: 8px 0 72px;
+}
+.legal-content h2{
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 40px 0 12px;
+}
+.legal-content h2:first-child{ margin-top: 0; }
+.legal-content p{
+  margin: 0 0 16px;
+  color: var(--ink);
+  line-height: 1.65;
+}
+.legal-content ul{
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.legal-content li{
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
 /* ============================================================
    Responsive
    ============================================================ */
