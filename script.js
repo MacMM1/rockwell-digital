@@ -88,6 +88,18 @@
     }
   }
 
+  // Free-audit lead magnet: pre-fill the message when arriving via ?audit=1
+  const messageField = document.getElementById('cf-message');
+  if (messageField && new URLSearchParams(window.location.search).get('audit') === '1') {
+    messageField.value = "I'd like a free audit of my current website. Here's the URL: ";
+    document.getElementById('contact')?.scrollIntoView();
+    window.setTimeout(() => {
+      messageField.focus();
+      const end = messageField.value.length;
+      messageField.setSelectionRange(end, end);
+    }, reduceMotion ? 50 : 450);
+  }
+
   // Contact form -> mailto (static site, no backend)
   const form = document.getElementById('contactForm');
   if (form) {
