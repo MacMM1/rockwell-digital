@@ -20,6 +20,34 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // Founding-client offer box: cube-swarm assembly entrance
+  if (!reduceMotion) {
+    document.querySelectorAll('.why-footnote-box').forEach((box) => {
+      const cubes = document.createElement('div');
+      cubes.className = 'offer-cubes';
+      cubes.setAttribute('aria-hidden', 'true');
+      const cols = 14;
+      const rows = 3;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cube = document.createElement('span');
+          cube.className = 'offer-cube';
+          const fromX = (Math.random() * 2 - 1) * 70;
+          let fromY;
+          if (r === 0) fromY = -(90 + Math.random() * 70);
+          else if (r === rows - 1) fromY = 90 + Math.random() * 70;
+          else fromY = (Math.random() < 0.5 ? -1 : 1) * (70 + Math.random() * 60);
+          const rot = (Math.random() * 2 - 1) * 30;
+          const delay = Math.round(Math.random() * 380);
+          cube.style.setProperty('--cube-from', `translate(${fromX}px, ${fromY}px) rotate(${rot}deg) scale(0.35)`);
+          cube.style.setProperty('--cube-delay', `${delay}ms`);
+          cubes.appendChild(cube);
+        }
+      }
+      box.insertBefore(cubes, box.firstChild);
+    });
+  }
+
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');

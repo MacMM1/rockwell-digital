@@ -617,11 +617,51 @@ section{ padding: var(--gap-section) 0; }
 /* Founding-client offer box (Home + Contact) */
 .why-footnote-banner{ padding: 32px 0; }
 .why-footnote-box{
-  background: var(--linen);
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--line-strong);
   padding: 22px 32px;
 }
-.why-footnote-box .why-footnote{ margin-top: 0; font-size: 0.98rem; text-align: center; }
+.why-footnote-box .why-footnote{
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  font-size: 0.98rem;
+  text-align: center;
+  opacity: 0;
+  animation: offerTextIn 480ms var(--ease-out) both;
+  animation-delay: 760ms;
+}
+.offer-cubes{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  pointer-events: none;
+}
+.offer-cube{
+  background: var(--linen);
+  opacity: 0;
+  transform: var(--cube-from);
+  animation: offerCubeIn 640ms var(--ease-snap) both;
+  animation-delay: var(--cube-delay, 0ms);
+}
+@keyframes offerCubeIn{
+  0%{ transform: var(--cube-from); opacity: 0; }
+  55%{ opacity: 1; }
+  100%{ transform: translate(0,0) rotate(0deg) scale(1); opacity: 1; }
+}
+@keyframes offerTextIn{
+  from{ opacity: 0; transform: translateY(6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce){
+  .why-footnote-box{ background: var(--linen); }
+  .offer-cubes{ display: none; }
+  .why-footnote-box .why-footnote{ animation: none; opacity: 1; transform: none; }
+}
 
 /* ============================================================
    Industries grid (reuses .why-card for cells)
