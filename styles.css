@@ -640,8 +640,13 @@ section{ padding: var(--gap-section) 0; }
 .explore-row{
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 10px;
   margin-top: 32px;
+}
+.explore-row .btn{
+  padding: 11px 18px;
+  font-size: 0.85rem;
+  gap: 6px;
 }
 
 /* ============================================================
@@ -1351,7 +1356,7 @@ section{ padding: var(--gap-section) 0; }
     overflow: hidden;
     transition: max-height 220ms var(--ease-out);
   }
-  .main-nav.is-open{ max-height: 460px; }
+  .main-nav.is-open{ max-height: 400px; }
   .main-nav a{
     padding: 16px 24px;
     border-top: 1px solid var(--line);
