@@ -630,7 +630,7 @@ section{ padding: var(--gap-section) 0; }
   text-align: center;
   opacity: 0;
   animation: offerTextIn 480ms var(--ease-out) both;
-  animation-delay: 760ms;
+  animation-delay: 900ms;
 }
 .offer-cubes{
   position: absolute;
@@ -651,7 +651,7 @@ section{ padding: var(--gap-section) 0; }
 @keyframes offerCubeIn{
   0%{ transform: var(--cube-from); opacity: 0; }
   55%{ opacity: 1; }
-  100%{ transform: translate(0,0) rotate(0deg) scale(1); opacity: 1; }
+  100%{ transform: translateY(0); opacity: 1; }
 }
 @keyframes offerTextIn{
   from{ opacity: 0; transform: translateY(6px); }
@@ -760,6 +760,8 @@ section{ padding: var(--gap-section) 0; }
    Sub-page hero (About / service detail pages)
    ============================================================ */
 .page-hero{
+  position: relative;
+  overflow: hidden;
   padding: clamp(48px, 7vw, 80px) 0 clamp(40px, 6vw, 64px);
   border-bottom: 1px solid var(--line);
 }
