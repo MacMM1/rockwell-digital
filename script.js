@@ -20,8 +20,8 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Founding-client offer box: falling blocks spell "Founding-client offer" (same idea as
-  // the Tetris board's pixel wordmark), then the rest of the sentence fades in below.
+  // Founding-client offer box: a static pixel-grid heading spelling "Founding-client offer"
+  // (same idea as the Tetris board's pixel wordmark).
   const OFFER_FONT = {
     F: [[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,1,1,0],[1,0,0,0],[1,0,0,0],[1,0,0,0]],
     O: [[0,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
@@ -59,7 +59,7 @@
     return { fills, cols: x - OFFER_LETTER_GAP };
   }
 
-  if (!reduceMotion) {
+  {
     const offerLayout = buildOfferLayout(OFFER_TEXT);
     document.querySelectorAll('.why-footnote-box').forEach((box) => {
       const container = document.createElement('div');
@@ -77,10 +77,6 @@
           cell.style.gridRow = String(row + 1);
           if (onCells.has(`${col},${row}`)) {
             cell.classList.add('offer-heading-cube');
-            const fromY = -(70 + row * 12 + Math.random() * 40);
-            const delay = row * 65 + Math.round(Math.random() * 50);
-            cell.style.setProperty('--cube-from', `translateY(${fromY}px)`);
-            cell.style.setProperty('--cube-delay', `${delay}ms`);
           }
           container.appendChild(cell);
         }
