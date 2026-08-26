@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=29">
+  <link rel="stylesheet" href="styles.css?v=30">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -105,7 +105,7 @@
     <section class="play" id="play">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="play-teaser"><span class="play-teaser-dot" aria-hidden="true"></span>Try your luck. Win a free website demo.</p>
+          <p class="play-teaser"><span class="play-teaser-dot" aria-hidden="true"></span>Try your luck. Win a free website audit or Local SEO setup.</p>
           <p class="play-down-hint">Hint: press ↓ on your keyboard.</p>
         </div>
         <div class="game-shell reveal">
@@ -204,22 +204,34 @@
     </div>
   </footer>
 
-  <dialog class="win-modal" id="winModal" aria-labelledby="winModalTitle">
+  <dialog class="win-modal" id="winModal" aria-labelledby="winModalTitle" aria-describedby="winModalDesc">
     <form method="dialog" class="win-modal-inner">
       <button type="submit" class="win-modal-close" aria-label="Close">&times;</button>
       <span class="section-tag">You won</span>
       <h2 id="winModalTitle">Congratulations!</h2>
-      <p>You've won a free homepage design mockup for your business, in your own style — delivered within a few days, no obligation to go further. Claim it with the code below.</p>
-      <span class="win-modal-code" id="winModalCode">ROCKDEMO</span>
+      <p id="winModalDesc">Pick one free prize for your business — delivered within a few days, no obligation to go further.</p>
+      <div class="win-modal-choices" role="group" aria-label="Choose your free prize">
+        <button type="button" class="win-modal-choice" id="winChoiceAudit" autofocus
+          data-code="ROCKAUDIT"
+          data-message="I'd like to claim my free website audit (code ROCKAUDIT). Here's the URL: ">
+          <span class="win-modal-choice-label">Free website audit</span>
+          <span class="win-modal-code">ROCKAUDIT</span>
+        </button>
+        <button type="button" class="win-modal-choice" id="winChoiceSeo"
+          data-code="ROCKSEO"
+          data-message="I'd like to claim my free Local SEO setup (code ROCKSEO). Here are my business details: ">
+          <span class="win-modal-choice-label">Free Local SEO setup</span>
+          <span class="win-modal-code">ROCKSEO</span>
+        </button>
+      </div>
       <div class="win-modal-actions">
-        <button type="button" class="btn btn-primary" id="winModalRedeem" autofocus>Redeem now</button>
         <button type="submit" class="btn btn-secondary">Maybe later</button>
       </div>
     </form>
   </dialog>
 
   <script src="cookie-consent.js" defer></script>
-  <script src="script.js?v=12" defer></script>
+  <script src="script.js?v=13" defer></script>
   <script src="tetris.js?v=9" defer></script>
 </body>
 </html>

@@ -640,13 +640,8 @@ section{ padding: var(--gap-section) 0; }
 .explore-row{
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 14px;
   margin-top: 32px;
-}
-.explore-row .btn{
-  padding: 11px 18px;
-  font-size: 0.85rem;
-  gap: 6px;
 }
 
 /* ============================================================
@@ -1120,6 +1115,39 @@ section{ padding: var(--gap-section) 0; }
   padding: 8px 16px;
   background: var(--linen);
 }
+.win-modal-choices{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.win-modal-choice{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  transition: transform 140ms steps(3, end), background-color 140ms var(--ease-out);
+}
+.win-modal-choice:hover{
+  background: var(--ink);
+  transform: translate(-2px,-2px);
+}
+.win-modal-choice:active{ transform: translate(0,0); }
+.win-modal-choice .win-modal-code{ align-self: center; }
+.win-modal-choice-label{
+  font-weight: 700;
+  font-size: 1rem;
+  transition: color 140ms var(--ease-out);
+}
+.win-modal-choice:hover .win-modal-choice-label{ color: var(--paper); }
 .win-modal-actions{
   display: flex;
   gap: 12px;
