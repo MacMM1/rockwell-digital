@@ -20,26 +20,66 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Founding-client offer box: built from the same falling blocks as the background rain
+  // Founding-client offer box: falling blocks spell "Founding-client offer" (same idea as
+  // the Tetris board's pixel wordmark), then the rest of the sentence fades in below.
+  const OFFER_FONT = {
+    F: [[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,1,1,0],[1,0,0,0],[1,0,0,0],[1,0,0,0]],
+    O: [[0,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
+    U: [[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
+    N: [[1,0,0,1],[1,1,0,1],[1,1,0,1],[1,0,1,1],[1,0,1,1],[1,0,0,1],[1,0,0,1]],
+    D: [[1,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,1,1,0]],
+    I: [[1],[1],[1],[1],[1],[1],[1]],
+    G: [[0,1,1,1],[1,0,0,0],[1,0,0,0],[1,0,1,1],[1,0,0,1],[1,0,0,1],[0,1,1,1]],
+    '-': [[0,0,0,0],[0,0,0,0],[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+    C: [[0,1,1,1],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[0,1,1,1]],
+    L: [[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,1,1,1]],
+    E: [[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,1,1,0],[1,0,0,0],[1,0,0,0],[1,1,1,1]],
+    T: [[1,1,1,1,1],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0]],
+    R: [[1,1,1,0],[1,0,0,1],[1,0,0,1],[1,1,1,0],[1,0,1,0],[1,0,0,1],[1,0,0,1]],
+    ' ': [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+  };
+  const OFFER_TEXT = 'FOUNDING-CLIENT OFFER';
+  const OFFER_GLYPH_ROWS = 7;
+  const OFFER_LETTER_GAP = 1;
+
+  function buildOfferLayout(text) {
+    const fills = [];
+    let x = 0;
+    for (const ch of text) {
+      const glyph = OFFER_FONT[ch];
+      if (!glyph) continue;
+      const w = glyph[0].length;
+      glyph.forEach((row, r) => {
+        row.forEach((v, c) => {
+          if (v) fills.push({ col: x + c, row: r });
+        });
+      });
+      x += w + OFFER_LETTER_GAP;
+    }
+    return { fills, cols: x - OFFER_LETTER_GAP };
+  }
+
   if (!reduceMotion) {
+    const offerLayout = buildOfferLayout(OFFER_TEXT);
     document.querySelectorAll('.why-footnote-box').forEach((box) => {
-      const cubes = document.createElement('div');
-      cubes.className = 'offer-cubes';
-      cubes.setAttribute('aria-hidden', 'true');
-      const cols = 14;
-      const rows = 3;
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const cube = document.createElement('span');
-          cube.className = 'offer-cube';
-          const fromY = -(120 + r * 40 + Math.random() * 60);
-          const delay = r * 160 + Math.round(Math.random() * 140);
-          cube.style.setProperty('--cube-from', `translateY(${fromY}px)`);
-          cube.style.setProperty('--cube-delay', `${delay}ms`);
-          cubes.appendChild(cube);
-        }
-      }
-      box.insertBefore(cubes, box.firstChild);
+      const container = document.createElement('div');
+      container.className = 'offer-heading-cubes';
+      container.setAttribute('aria-hidden', 'true');
+      container.style.gridTemplateColumns = `repeat(${offerLayout.cols}, 1fr)`;
+      container.style.gridTemplateRows = `repeat(${OFFER_GLYPH_ROWS}, 1fr)`;
+      container.style.aspectRatio = `${offerLayout.cols} / ${OFFER_GLYPH_ROWS}`;
+      offerLayout.fills.forEach(({ col, row }) => {
+        const cube = document.createElement('span');
+        cube.className = 'offer-heading-cube';
+        cube.style.gridColumn = String(col + 1);
+        cube.style.gridRow = String(row + 1);
+        const fromY = -(70 + row * 12 + Math.random() * 40);
+        const delay = row * 65 + Math.round(Math.random() * 50);
+        cube.style.setProperty('--cube-from', `translateY(${fromY}px)`);
+        cube.style.setProperty('--cube-delay', `${delay}ms`);
+        container.appendChild(cube);
+      });
+      box.insertBefore(container, box.firstChild);
     });
   }
 
