@@ -36,6 +36,7 @@
       <nav class="main-nav" id="mainNav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
+        <a href="local-seo.html">Local SEO</a>
         <a href="case-studies.html">Case Studies</a>
         <a href="industries.html">Industries</a>
         <a href="about.html">About</a>
@@ -74,9 +75,10 @@
         <p>The contact form on this site doesn't submit to a server or database we manage — it opens your own email app with a message ready to send. Once you send it, it goes to us as a normal email, the same as if you'd emailed us directly.</p>
 
         <h2>Cookies we use</h2>
-        <p>This website doesn't set any cookies, and we don't run any advertising or analytics scripts on it.</p>
-        <p>The only thing stored in your browser is a single local-storage entry that remembers whether you've chosen light or dark mode. It stays on your device, is never sent to us or anyone else, and you can clear it at any time by clearing your browser's site data for this domain.</p>
-        <p>If that changes in future — for example, if we add basic analytics to understand how the site is used — we'll update this page and, where the law requires it, ask for your consent first.</p>
+        <p>This website uses Google Analytics (GA4) to understand how visitors use it — which pages get looked at, roughly how people found us, and general device/location information (like "mobile, UK"). It doesn't identify you personally, and we don't run any advertising or retargeting scripts.</p>
+        <p>You choose whether this runs. On your first visit, a banner asks you to accept or decline. If you decline, no analytics cookie is set and no data is sent to Google. You can change your mind at any time using the "Cookie settings" link in the footer of every page.</p>
+        <p>Separately, a small local-storage entry remembers whether you've chosen light or dark mode. This one isn't optional since it's not tracking — it stays on your device, is never sent to us or anyone else, and doesn't need consent under UK law because it's "strictly necessary" for a feature you asked for (the theme toggle).</p>
+        <p>We practise this same analytics setup on our own site before we ever run it on a client's, so we understand it properly and can show you exactly what your own dashboard will look like.</p>
 
         <h2>How long we keep it</h2>
         <p>We keep enquiry emails for as long as they're reasonably useful to us — generally no more than a few years after our last contact with you — and delete them after that.</p>
@@ -114,6 +116,7 @@
       <nav class="footer-nav" aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
+        <a href="local-seo.html">Local SEO</a>
         <a href="case-studies.html">Case Studies</a>
         <a href="industries.html">Industries</a>
         <a href="about.html">About</a>
@@ -122,10 +125,11 @@
       <p class="footer-meta">hello@rockwelldigital.co.uk</p>
     </div>
     <div class="wrap footer-legal">
-      <p>© <span id="year"></span> Rockwell Digital · <a href="privacy.html">Privacy &amp; Cookies</a> · <a href="terms.html">Terms &amp; Conditions</a></p>
+      <p>© <span id="year"></span> Rockwell Digital · <a href="privacy.html">Privacy &amp; Cookies</a> · <a href="terms.html">Terms &amp; Conditions</a> · <button type="button" class="cookie-settings-link" id="cookieSettingsBtn">Cookie settings</button></p>
     </div>
   </footer>
 
+  <script src="cookie-consent.js" defer></script>
   <script src="script.js?v=12" defer></script>
 </body>
 </html>

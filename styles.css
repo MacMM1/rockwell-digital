@@ -499,7 +499,7 @@ section{ padding: var(--gap-section) 0; }
    ============================================================ */
 .services-grid{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   background: var(--line-strong);
   border: 1px solid var(--line-strong);
@@ -613,6 +613,15 @@ section{ padding: var(--gap-section) 0; }
   color: var(--ink);
 }
 .why-footnote a{ text-decoration: underline; text-underline-offset: 2px; }
+
+/* Founding-client offer strip (Home + Contact) */
+.why-footnote-banner{
+  background: var(--linen);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+.why-footnote-banner .why-footnote{ margin-top: 0; font-size: 0.98rem; text-align: center; }
 
 /* ============================================================
    Industries grid (reuses .why-card for cells)
@@ -1252,6 +1261,51 @@ section{ padding: var(--gap-section) 0; }
 }
 
 /* ============================================================
+   Cookie consent banner
+   ============================================================ */
+.cookie-banner{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 900;
+  background: var(--ink);
+  color: var(--paper);
+  border-top: 2px solid var(--ink);
+}
+.cookie-banner-inner{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+}
+.cookie-banner-inner p{
+  margin: 0;
+  color: var(--paper);
+  font-size: 0.92rem;
+  max-width: 62ch;
+}
+.cookie-banner-inner a{ color: var(--paper); text-decoration: underline; text-underline-offset: 2px; }
+.cookie-banner-actions{ display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-banner-actions .btn{ padding: 10px 18px; font-size: 0.9rem; }
+.cookie-banner-actions .btn-primary{ background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.cookie-banner-actions .btn-primary:hover{ background: var(--clay-text); border-color: var(--clay-text); color: var(--paper); }
+.cookie-banner-actions .btn-secondary{ color: var(--paper); border-color: var(--paper); }
+.cookie-banner-actions .btn-secondary:hover{ background: var(--paper); color: var(--ink); }
+
+.cookie-settings-link{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 920px){
@@ -1297,7 +1351,7 @@ section{ padding: var(--gap-section) 0; }
     overflow: hidden;
     transition: max-height 220ms var(--ease-out);
   }
-  .main-nav.is-open{ max-height: 400px; }
+  .main-nav.is-open{ max-height: 460px; }
   .main-nav a{
     padding: 16px 24px;
     border-top: 1px solid var(--line);
@@ -1310,4 +1364,6 @@ section{ padding: var(--gap-section) 0; }
   .hero-facts{ flex-direction: column; gap: 10px; }
   .footer-inner{ flex-direction: column; align-items: flex-start; }
   .footer-meta{ text-align: left; }
+  .cookie-banner-inner{ flex-direction: column; align-items: stretch; text-align: center; }
+  .cookie-banner-actions{ justify-content: center; }
 }

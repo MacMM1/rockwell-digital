@@ -88,16 +88,22 @@
     }
   }
 
-  // Free-audit lead magnet: pre-fill the message when arriving via ?audit=1
+  // Free-offer lead magnets: pre-fill the message when arriving via ?audit=1 or ?gbp=1
   const messageField = document.getElementById('cf-message');
-  if (messageField && new URLSearchParams(window.location.search).get('audit') === '1') {
-    messageField.value = "I'd like a free audit of my current website. Here's the URL: ";
+  const leadParam = new URLSearchParams(window.location.search);
+  const prefillMessage = (text) => {
+    messageField.value = text;
     document.getElementById('contact')?.scrollIntoView();
     window.setTimeout(() => {
       messageField.focus();
       const end = messageField.value.length;
       messageField.setSelectionRange(end, end);
     }, reduceMotion ? 50 : 450);
+  };
+  if (messageField && leadParam.get('audit') === '1') {
+    prefillMessage("I'd like a free audit of my current website. Here's the URL: ");
+  } else if (messageField && leadParam.get('gbp') === '1') {
+    prefillMessage("I'd like the free Google Business Profile & Local SEO setup for my business. Here are my business details: ");
   }
 
   // Contact form -> mailto (static site, no backend)
@@ -135,6 +141,9 @@
         const promoField = document.getElementById('cf-promo');
         const nameField = document.getElementById('cf-name');
         if (promoField && codeEl) promoField.value = codeEl.textContent.trim();
+        if (messageField && !messageField.value) {
+          messageField.value = "I'd like to claim my free homepage design mockup (code ROCKDEMO). Here's a bit about my business: ";
+        }
         document.getElementById('contact')?.scrollIntoView();
         if (nameField) {
           window.setTimeout(() => nameField.focus(), reduceMotion ? 50 : 450);
