@@ -640,6 +640,7 @@ section{ padding: var(--gap-section) 0; }
 .explore-row{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
   margin-top: 32px;
 }
