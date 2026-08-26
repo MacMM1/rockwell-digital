@@ -645,10 +645,18 @@ section{ padding: var(--gap-section) 0; }
 .offer-heading-cubes{
   display: grid;
   width: 100%;
+  box-sizing: border-box;
   margin: 0 auto 14px;
+  padding: 10px;
   position: relative;
   z-index: 1;
   pointer-events: none;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px),
+    var(--linen);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
 }
 .offer-heading-cube{
   background: var(--ink);
