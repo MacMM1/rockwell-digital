@@ -116,7 +116,7 @@
     });
   }
 
-  // Tetris win modal (only present on index.html, where tetris.js runs)
+  // Tetris win modal (only present on contact.html, where tetris.js runs)
   const winModal = document.getElementById('winModal');
   if (winModal) {
     document.addEventListener('rd:tetris-win', () => {
