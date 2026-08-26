@@ -652,13 +652,14 @@ section{ padding: var(--gap-section) 0; }
   z-index: 1;
   pointer-events: none;
   border: 1px solid var(--line-strong);
-  background:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px),
-    var(--linen);
-  background-size: 28px 28px, 28px 28px, 100% 100%;
+  background: var(--linen);
+}
+.offer-heading-cell{
+  box-sizing: border-box;
+  border: 1px solid var(--line);
 }
 .offer-heading-cube{
+  border-color: transparent;
   background: var(--ink);
   opacity: 0;
   transform: var(--cube-from);

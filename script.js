@@ -68,17 +68,23 @@
       container.style.gridTemplateColumns = `repeat(${offerLayout.cols}, 1fr)`;
       container.style.gridTemplateRows = `repeat(${OFFER_GLYPH_ROWS}, 1fr)`;
       container.style.aspectRatio = `${offerLayout.cols} / ${OFFER_GLYPH_ROWS}`;
-      offerLayout.fills.forEach(({ col, row }) => {
-        const cube = document.createElement('span');
-        cube.className = 'offer-heading-cube';
-        cube.style.gridColumn = String(col + 1);
-        cube.style.gridRow = String(row + 1);
-        const fromY = -(70 + row * 12 + Math.random() * 40);
-        const delay = row * 65 + Math.round(Math.random() * 50);
-        cube.style.setProperty('--cube-from', `translateY(${fromY}px)`);
-        cube.style.setProperty('--cube-delay', `${delay}ms`);
-        container.appendChild(cube);
-      });
+      const onCells = new Set(offerLayout.fills.map(({ col, row }) => `${col},${row}`));
+      for (let row = 0; row < OFFER_GLYPH_ROWS; row++) {
+        for (let col = 0; col < offerLayout.cols; col++) {
+          const cell = document.createElement('span');
+          cell.className = 'offer-heading-cell';
+          cell.style.gridColumn = String(col + 1);
+          cell.style.gridRow = String(row + 1);
+          if (onCells.has(`${col},${row}`)) {
+            cell.classList.add('offer-heading-cube');
+            const fromY = -(70 + row * 12 + Math.random() * 40);
+            const delay = row * 65 + Math.round(Math.random() * 50);
+            cell.style.setProperty('--cube-from', `translateY(${fromY}px)`);
+            cell.style.setProperty('--cube-delay', `${delay}ms`);
+          }
+          container.appendChild(cell);
+        }
+      }
       box.insertBefore(container, box.firstChild);
     });
   }
