@@ -157,21 +157,31 @@
   const messageField = document.getElementById('cf-message');
   const promoField = document.getElementById('cf-promo');
   const leadParam = new URLSearchParams(window.location.search);
-  const prefillMessage = (text) => {
+  const landingOnPlay = window.location.hash === '#play';
+
+  if (messageField) {
+    messageField.addEventListener('input', () => { delete messageField.dataset.autofilled; });
+  }
+
+  const prefillMessage = (text, opts = {}) => {
+    const scroll = opts.scroll !== false;
     messageField.value = text;
-    document.getElementById('contact')?.scrollIntoView();
-    window.setTimeout(() => {
-      messageField.focus();
-      const end = messageField.value.length;
-      messageField.setSelectionRange(end, end);
-    }, reduceMotion ? 50 : 450);
+    messageField.dataset.autofilled = 'true';
+    if (scroll) {
+      document.getElementById('contact')?.scrollIntoView();
+      window.setTimeout(() => {
+        messageField.focus();
+        const end = messageField.value.length;
+        messageField.setSelectionRange(end, end);
+      }, reduceMotion ? 50 : 450);
+    }
   };
   if (messageField && leadParam.get('audit') === '1') {
     if (promoField) promoField.value = 'ROCKAUDIT';
-    prefillMessage("I'd like a free audit of my current website. Here's the URL: ");
+    prefillMessage("I'd like a free audit of my current website. Here's the URL: ", { scroll: !landingOnPlay });
   } else if (messageField && leadParam.get('gbp') === '1') {
     if (promoField) promoField.value = 'ROCKSEO';
-    prefillMessage("I'd like the free Google Business Profile & Local SEO setup for my business. Here are my business details: ");
+    prefillMessage("I'd like the free Google Business Profile & Local SEO setup for my business. Here are my business details: ", { scroll: !landingOnPlay });
   }
 
   // Contact form -> mailto (static site, no backend)
@@ -207,8 +217,9 @@
         winModal.close();
         const code = choiceBtn.dataset.code;
         if (promoField && code) promoField.value = code;
-        if (messageField && !messageField.value) {
+        if (messageField && (!messageField.value || messageField.dataset.autofilled === 'true')) {
           messageField.value = choiceBtn.dataset.message || '';
+          messageField.dataset.autofilled = 'true';
         }
         document.getElementById('contact')?.scrollIntoView();
         if (nameField) {
