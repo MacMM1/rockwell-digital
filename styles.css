@@ -890,6 +890,7 @@ section{ padding: var(--gap-section) 0; }
 .founder-cred{
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -897,24 +898,16 @@ section{ padding: var(--gap-section) 0; }
 }
 .founder-cred svg{ width: 12px; height: 12px; flex-shrink: 0; }
 .founder-cred svg rect{ fill: var(--clay-text); }
-.founder-skills{
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-  margin-bottom: 26px;
+.cred-label{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
-.founder-skills-label{
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.cred-view{
   color: var(--clay-text);
-  display: block;
-  margin-bottom: 8px;
-}
-.founder-skills p{
-  color: var(--clay-text);
-  font-size: 0.92rem;
-  max-width: 62ch;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
 }
 
 /* ============================================================
