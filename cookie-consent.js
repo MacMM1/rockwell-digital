@@ -1,7 +1,11 @@
 (() => {
-  // TODO: replace with your real GA4 Measurement ID once you've created a GA4 property
-  // (Google Analytics > Admin > Data Streams > your web stream > Measurement ID, looks like G-ABC1234XYZ)
-  const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  // TODO: replace with the real GTM Container ID once you've created one
+  // (Google Tag Manager > Admin > Container Settings > Container ID, looks like GTM-ABC1234)
+  // GA4 (and, optionally, Microsoft Clarity) get configured as tags *inside* this container
+  // in the GTM web UI — see website-services/analytics_setup.md for the full walkthrough.
+  // This replaces loading gtag.js directly: once this container ID is real, GA4/Clarity/any
+  // future tag can be added or changed purely in GTM, with no further code changes here.
+  const GTM_CONTAINER_ID = 'GTM-XXXXXXX';
   const CONSENT_KEY = 'rd-consent';
 
   const getConsent = () => {
@@ -11,18 +15,15 @@
     try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
   };
 
-  const loadGA4 = () => {
-    if (window.__rdGaLoaded || GA_MEASUREMENT_ID.includes('XXXXXXXXXX')) return;
-    window.__rdGaLoaded = true;
-    const s = document.createElement('script');
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    s.async = true;
-    document.head.appendChild(s);
+  const loadGTM = () => {
+    if (window.__rdGtmLoaded || GTM_CONTAINER_ID.includes('XXXXXXX')) return;
+    window.__rdGtmLoaded = true;
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ window.dataLayer.push(arguments); }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_CONTAINER_ID}`;
+    document.head.appendChild(s);
   };
 
   const buildBanner = () => {
@@ -36,7 +37,7 @@
     banner.setAttribute('aria-label', 'Cookie consent');
     banner.innerHTML = `
       <div class="wrap cookie-banner-inner">
-        <p>We use Google Analytics to see how visitors use this site — nothing sold, no ad tracking. <a href="privacy.html">Read our privacy policy</a>.</p>
+        <p>We use analytics tools to see how visitors use this site — nothing sold, no ad tracking. <a href="privacy.html">Read our privacy policy</a>.</p>
         <div class="cookie-banner-actions">
           <button type="button" class="btn btn-secondary" id="cookieDecline">Decline</button>
           <button type="button" class="btn btn-primary" id="cookieAccept">Accept</button>
@@ -47,7 +48,7 @@
 
     document.getElementById('cookieAccept').addEventListener('click', () => {
       setConsent('accepted');
-      loadGA4();
+      loadGTM();
       banner.remove();
     });
     document.getElementById('cookieDecline').addEventListener('click', () => {
@@ -58,7 +59,7 @@
 
   const consent = getConsent();
   if (consent === 'accepted') {
-    loadGA4();
+    loadGTM();
   } else if (consent !== 'declined') {
     buildBanner();
   }
