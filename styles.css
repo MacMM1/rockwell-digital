@@ -807,6 +807,11 @@ section{ padding: var(--gap-section) 0; }
   display: flex;
   flex-direction: column;
   gap: 16px;
+  /* Grid items default to min-width:auto, which for a child containing an
+     <img> uses the image's intrinsic width (960px) as a floor — Safari
+     enforces this strictly and blows the card out past its column on
+     mobile. min-width:0 lets it actually shrink to the grid track. */
+  min-width: 0;
 }
 .case-card-image{
   position: relative;
