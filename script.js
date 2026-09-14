@@ -1,4 +1,16 @@
 (() => {
+  // Tidy the address bar: GitHub Pages already serves e.g. /case-studies
+  // without needing the .html, so a plain URL rewrite here is enough to
+  // hide the extension after any page load — no link hrefs or hosting
+  // config need to change for this.
+  if (window.history && window.history.replaceState && /\.html$/.test(location.pathname)) {
+    let cleanPath = location.pathname.replace(/index\.html$/, '').replace(/\.html$/, '');
+    if (cleanPath === '') cleanPath = '/';
+    if (cleanPath !== location.pathname) {
+      history.replaceState(history.state, '', cleanPath + location.search + location.hash);
+    }
+  }
+
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
